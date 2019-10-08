@@ -1,40 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Statistical Calculator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--BOOTSTRAP CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--BOOTSTRAP JAVASCRIPT: jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <title>Statistical Calculator</title>    
 </head>
 <body>
 <h1>Statistical calculator</h1>
 <br> 
 
-<label><strong>Enter numbers: </strong><input type=text name=inputNumbers id="numbers"></label><br><br>
 <br><br>
-	<button id="calculate">Calculate</button>
-	
+	<div class="input-group mb-3" class="form-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Numbers to Use</span>
+        </div>
+        <input type="text" id="numbers" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" placeholder="Input Numbers">
+    </div>
+    
+    <button id="calculate" class="btn btn-secondary">Calculate</button>
 <hr>
   <form>
         
-		<br><br>
-		<div id="result"></div><br>
-        <label>Total: <input type=text name=totalSum id=totalSum></label><br><br>
-        <label>Count: <input type=text name=count id=count></label><br><br>
-        <label>Max Val: <input type=text name=maxVal id=maxVal></label><br><br>
-        <label>Min Val: <input type=text name=minVal id=minVal></label><br><br>
-        <label>Mean: <input type=text name=mean id=mean></label><br><br>
-        <label>Median: <input type=text name=median id=median></label><br><br>
-        <label>Mode: <input type=text name=mode id=mode></label><br><br>
-        <label>Standard Deviation: <input type=text name=standardDev id=standardDev></label><br><br>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Set of Numbers</span>
+        </div>
+        <input type="text" id="numbersUsedInput" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+<hr>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Total</span>
+        </div>
+        <input type="text" id="totalSum" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Count</span>
+        </div>
+        <input type="text" id="count" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Maximum Value</span>
+        </div>
+        <input type="text" id="maxVal" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Minimum Value</span>
+        </div>
+        <input type="text" id="minVal" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Mean</span>
+        </div>
+        <input type="text" id="mean" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Median</span>
+        </div>
+        <input type="text" id="median" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Mode</span>
+        </div>
+        <input type="text" id="mode" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Standard Deviation</span>
+        </div>
+        <input type="text" id="standardDev" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+    </div>
+<br>
     </form>
 
 <div id="result"></div>
 <script>
 function get_results() {
-    var fname = document.getElementById('numbers').value;
+    var enteredString = document.getElementById('numbers').value;
     //var res = fname.split(" ").map(function(Array);
-      var html = 'You entered <b>' + fname;
-  
-      document.getElementById('result').innerHTML = html;
+    var enteredNumbers = enteredString.replace(/\D/g,' ');
+    document.getElementById('numbersUsedInput').value = enteredNumbers;
+    //var html = 'Numbers Used: <b>' + enteredNumbers;
+    //document.getElementById('result').innerHTML = html;
 }
 document.getElementById('calculate').addEventListener('click', get_results);
 </script>
