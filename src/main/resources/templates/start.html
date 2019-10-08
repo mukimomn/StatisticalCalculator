@@ -1,29 +1,22 @@
-  
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1"/>
-<title>Statistical Calculator</title>
-<script>
-  function get_results() {
-    var numbers = document.getElementById('numbers').value;
-    //var res = fname.split(" ").map(function(Array);
-    var html = 'You entered <b>' + numbers + "<br> <br>Sum:<br><br>Max value <br> <br> Min Value <br><br> " +
-	"Min value <br><br>Average<br> <br> Median <br><br> Mode <br><br> Standard Deviation <br>" ;
-  
-    document.getElementById('result').innerHTML = html;
-}
-document.getElementById('calculate').addEventListener('click', get_results);
-</script>
+  <title>Statistical Calculator</title>
+
 </head>
 <body>
-<h1>Statistical Calculator</h1>
-    <form>
-        <label><strong>Enter numbers: </strong><input type=text name=inputNumbers id="numbers"></label><br><br>
-		<button id="calculate">Calculate</button>
-       
-        <br><br>
-		<div id="result"></div>
+<h1>Statistical calculator</h1>
+<br> 
+
+<label><strong>Enter numbers: </strong><input type=text name=inputNumbers id="numbers"></label><br><br>
+<br><br>
+	<button id="calculate">Calculate</button>
+	
+<hr>
+  <form>
+        
+		<br><br>
+		<div id="result"></div><br>
         <label>Total: <input type=text name=totalSum id=totalSum></label><br><br>
         <label>Count: <input type=text name=count id=count></label><br><br>
         <label>Max Val: <input type=text name=maxVal id=maxVal></label><br><br>
@@ -33,7 +26,18 @@ document.getElementById('calculate').addEventListener('click', get_results);
         <label>Mode: <input type=text name=mode id=mode></label><br><br>
         <label>Standard Deviation: <input type=text name=standardDev id=standardDev></label><br><br>
     </form>
-    <br><br>
-<footer><small>/start.html</small></footer>
+
+<div id="result"></div>
+<script>
+function get_results() {
+    var fname = document.getElementById('numbers').value;
+    //var res = fname.split(" ").map(function(Array);
+      var html = 'You entered <b>' + fname;
+  
+      document.getElementById('result').innerHTML = html;
+}
+document.getElementById('calculate').addEventListener('click', get_results);
+</script>
 </body>
+
 </html>
