@@ -8,8 +8,11 @@ public class StatisticalCalculatorController {
 	
 	@RequestMapping("/start")
 	public String start() {
-		
 		return "start";
 	}
-
+	
+	@RequestMapping("/")
+	public String index(){
+		return "start";
+	}
 }
