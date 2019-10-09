@@ -93,6 +93,9 @@ function get_results() {
     var enteredNumbers = enteredString.replace(/\D/g,' ');
     
     var convertedArray = enteredString.split(' ').map(function(item) {
+    	
+ 	var sortedArray=convertedArray;
+   	
     return parseInt(item, 10);
 });
 
@@ -101,7 +104,9 @@ function get_results() {
        var count =0;
        var max = convertedArray[0];
        var min =convertedArray[0];
-
+       var median = 0;
+       var mode = 0;
+	   
       for (var i =0; i<convertedArray.length; i++){
             sum =+ sum+ convertedArray[i];
             count++;
@@ -113,18 +118,19 @@ function get_results() {
             var min=convertedArray[i];
           }
         }
-
+		
         var average = sum / count;
     
-    
-    
+    	convertedArray.sort(function(a,b ){return a - b});
+    	
+    	
     document.getElementById('numbersUsedInput').value = enteredNumbers;
 	document.getElementById('totalSum').value = sum;
 	document.getElementById('count').value = count;
 	document.getElementById('maxVal').value = max;
 	document.getElementById('minVal').value = min;
 	document.getElementById('mean').value = average;
-	
+	document.getElementById('median').value = convertedArray;
     
     //document.getElementById('result').innerHTML = html;
 }
