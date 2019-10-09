@@ -90,13 +90,47 @@
 <script>
 function get_results() {
     var enteredString = document.getElementById('numbers').value;
-    //var res = fname.split(" ").map(function(Array);
+    
     var enteredNumbers = enteredString.replace(/\D/g,' ');
+    
+    var convertedArray = enteredString.split(' ').map(function(item) {
+    return parseInt(item, 10);
+});
+
+
+       var sum =0;
+       var count =0;
+       var max = convertedArray[0];
+       var min =convertedArray[0];
+
+      for (var i =0; i<convertedArray.length; i++){
+            sum =+ sum+ convertedArray[i];
+            count++;
+
+        if (convertedArray[i]>max) {
+            var max=convertedArray[i];
+          }
+        if (convertedArray[i]<min) {
+            var min=convertedArray[i];
+          }
+        }
+
+        var average = sum / count;
+    
+    
+    
     document.getElementById('numbersUsedInput').value = enteredNumbers;
-    //var html = 'Numbers Used: <b>' + enteredNumbers;
+	document.getElementById('totalSum').value = sum;
+	document.getElementById('count').value = count;
+	document.getElementById('maxVal').value = max;
+	document.getElementById('minVal').value = min;
+	document.getElementById('mean').value = average;
+	
+    
     //document.getElementById('result').innerHTML = html;
 }
 document.getElementById('calculate').addEventListener('click', get_results);
+
 </script>
 </body>
 
