@@ -123,6 +123,46 @@ function get_results() {
     
     	convertedArray.sort(function(a,b ){return a - b});
     	
+    	  //median calculation
+        if (convertedArray.length % 2 === 0 ) // is even
+        { // average of two middle numbers
+			median = (convertedArray[convertedArray.length / 2 - 1] + convertedArray[convertedArray.length / 2]) / 2;
+		} else {  // is odd
+				// middle number only
+				median = convertedArray[(convertedArray.length - 1) / 2];
+				}
+
+    
+    	 //mode calculation
+			var modes = [], countArray = [], i, number, maxIndex = 0;
+
+			for (i = 0; i < convertedArray.length; i += 1) {
+				number = convertedArray[i];
+				countArray[number] = (countArray[number] || 0) + 1;
+			if (countArray[number] > maxIndex) {
+    			maxIndex = countArray[number];
+				}
+			}
+
+				for (i in countArray)
+				if (countArray.hasOwnProperty(i)) {
+    		 if (countArray[i] === maxIndex) {
+        		modes.push(Number(i));
+    				}
+				}
+
+        if (countArray[i] ==1)
+        {
+                document.getElementById('mode').value = "no mode found";
+        }
+        else {
+        document.getElementById('mode').value = modes;
+        }
+
+
+// range calculator
+    	
+    	
     	
     document.getElementById('numbersUsedInput').value = enteredNumbers;
 	document.getElementById('totalSum').value = sum;
@@ -130,9 +170,10 @@ function get_results() {
 	document.getElementById('maxVal').value = max;
 	document.getElementById('minVal').value = min;
 	document.getElementById('mean').value = average;
-	document.getElementById('median').value = convertedArray;
+	document.getElementById('median').value = median;
+	
     
-    //document.getElementById('result').innerHTML = html;
+    
 }
 document.getElementById('calculate').addEventListener('click', get_results);
 
