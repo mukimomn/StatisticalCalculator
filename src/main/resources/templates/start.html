@@ -3,6 +3,8 @@
 <head>
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--CUSTOM CSS-->
+    <link rel="stylesheet" type="text/css" href="css.css">
     <!--BOOTSTRAP CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--BOOTSTRAP JAVASCRIPT: jQuery first, then Popper.js, then Bootstrap JS -->
@@ -13,12 +15,12 @@
     <title>Statistical Calculator</title>    
 </head>
 <body>
-<h1>Statistical calculator</h1>
+<h1>Statistical Calculator</h1>
+    
 <br> 
-<br><br>
 	<div class="input-group mb-3 form-group">
         <div class="input-group-prepend">
-            <span class="input-group-text">Numbers to Use</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="Seperate numbers with spaces or other characters">Numbers to Use</span>
         </div>
         <input type="text" id="numbers" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" placeholder="Input Numbers">
     </div>
@@ -29,56 +31,56 @@
         
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Set of Numbers</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="What we are basing our calculations on">Set of Numbers</span>
         </div>
-        <input type="text" id="numbersUsedInput" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
+        <input type="text" id="numbersUsedInput" class="form-control" aria-label="Numbers used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
 <hr>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Total</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="Sum of numbers">Total</span>
         </div>
         <input type="text" id="totalSum" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Count</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="Number of numbers">Count</span>
         </div>
         <input type="text" id="count" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Maximum Value</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="Largest number">Maximum Value</span>
         </div>
         <input type="text" id="maxVal" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Minimum Value</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="Smallest number">Minimum Value</span>
         </div>
         <input type="text" id="minVal" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Mean</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="The agerage of the numbers">Mean</span>
         </div>
         <input type="text" id="mean" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Median</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="The middle number, or the average between the two middle numbers">Median</span>
         </div>
         <input type="text" id="median" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Mode</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="The most frequently occuring number">Mode</span>
         </div>
         <input type="text" id="mode" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Standard Deviation</span>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="bottom" title="???">Standard Deviation</span>
         </div>
         <input type="text" id="standardDev" class="form-control" aria-label="Numbers Used" aria-describedby="inputGroup-sizing-default" readonly>
     </div>
@@ -86,19 +88,29 @@
     </form>
 <div id="result"></div>
 
+    
+    
 <script>
+//Enabling Tooltips for this page
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
+//Obtaining user-entered numbers
 function get_results() {
     var enteredString = document.getElementById('numbers').value;
     
+    //convert non-numbers to spaces
     var enteredNumbers = enteredString.replace(/\D/g,' ');
     
-    var convertedArray = enteredString.split(' ').map(function(item) {
-    	
- 	var sortedArray=convertedArray;
-   	
-    return parseInt(item, 10);
+    //turn string into array, split at spaces
+    var enteredArray = enteredNumbers.split(' ').map(function(item) {
+   	    return parseInt(item, 10);
 });
-
+    //remove spaces (which are NaNs) from array
+    var convertedArray = enteredArray.filter(function (item) {
+        return item;
+});
 
        var sum =0;
        var count =0;
@@ -162,9 +174,7 @@ function get_results() {
 
 // range calculator
     	
-    	
-    	
-    document.getElementById('numbersUsedInput').value = enteredNumbers;
+    document.getElementById('numbersUsedInput').value = convertedArray;
 	document.getElementById('totalSum').value = sum;
 	document.getElementById('count').value = count;
 	document.getElementById('maxVal').value = max;
