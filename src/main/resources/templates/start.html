@@ -112,15 +112,15 @@ function get_results() {
         return item;
 });
 
-       var sum =0;
-       var count =0;
+       var sum = 0;
+       var count = 0;
        var max = convertedArray[0];
-       var min =convertedArray[0];
+       var min = convertedArray[0];
        var median = 0;
        var mode = 0;
 	   
-      for (var i =0; i<convertedArray.length; i++){
-            sum =+ sum+ convertedArray[i];
+      for (var i =0; i < convertedArray.length; i++){
+            sum =+ convertedArray[i];
             count++;
 
         if (convertedArray[i]>max) {
@@ -163,7 +163,7 @@ function get_results() {
     				}
 				}
 
-        if (countArray[i] ==1)
+        if (countArray[i] == 1)
         {
                 document.getElementById('mode').value = "no mode found";
         }
