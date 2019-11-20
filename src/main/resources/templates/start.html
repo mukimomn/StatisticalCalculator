@@ -18,6 +18,11 @@
 </head>
 <body>
 <h1>Statistical Calculator</h1>
+<br/>
+Your saved calculation is:
+<p th:text="${SaveCalcDTO}/">
+
+
     
 <br /> 
 	<div class="input-group mb-3 form-group">
@@ -29,7 +34,7 @@
     
     <button id="calculate" class="btn btn-secondary" onClick="get_results()">Calculate</button>
 <hr>
-  <form>
+  <form action="#" th:action="@{/saveCalc}" th:object="${SaveCalcDTO}" method = "GET">
         
     <div class="input-group mb-3">
         <div class="input-group-prepend">
