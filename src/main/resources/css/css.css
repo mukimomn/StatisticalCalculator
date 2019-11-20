@@ -1,0 +1,18 @@
+
+
+body {
+    padding: 15px;
+}
+
+h1 {
+    
+}
+
+button {
+    background-color: grey !important; /*important needed to overwrite bootstrap doc*/
+    border-color: darkgrey !important;
+}
+
+
+
+

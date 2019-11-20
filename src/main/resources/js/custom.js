@@ -83,8 +83,8 @@ function get_results() {
 
 
 // range calculator
-    	
-    document.getElementById('numbersUsedInput').value = convertedArray;
+    	displayArray = convertedArray.join(", ");
+    document.getElementById('numbersUsedInput').value = displayArray;
 	document.getElementById('totalSum').value = sum;
 	document.getElementById('count').value = count;
 	document.getElementById('maxVal').value = max;
