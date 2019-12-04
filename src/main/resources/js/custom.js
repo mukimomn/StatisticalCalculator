@@ -81,9 +81,19 @@ function get_results() {
         document.getElementById('mode').value = modes;
         }
 
+        // standard deviation 
+        var sd =0;
 
-// range calculator
-    	displayArray = convertedArray.join(", ");
+        for ( i = 0; i < convertedArray.length; i++)
+         {
+
+          sd += ((convertedArray[i] - average)*(convertedArray[i] - average)) / (convertedArray.length - 1);
+          }
+
+          var standardDeviation = Math.sqrt(sd);
+
+
+    displayArray = convertedArray.join(", ");
     document.getElementById('numbersUsedInput').value = displayArray;
 	document.getElementById('totalSum').value = sum;
 	document.getElementById('count').value = count;
@@ -91,6 +101,7 @@ function get_results() {
 	document.getElementById('minVal').value = min;
 	document.getElementById('mean').value = average;
 	document.getElementById('median').value = median;
+	document.getElementById('standardDev').value = standardDeviation.toPrecision(2);
 	
     
     
