@@ -2,17 +2,37 @@
 
 body {
     padding: 15px;
+    margin: 0 auto;
+    max-width: 600px;
 }
 
-h1 {
-    
-}
+
 
 button {
-    background-color: grey !important; /*important needed to overwrite bootstrap doc*/
-    border-color: darkgrey !important;
+    background-color: #6f619e !important; /*important needed to overwrite bootstrap doc*/
+    border-color: #6f619e !important;
 }
 
+.setOfNumbers {
+    font-weight: bold;
+}
 
+div .input-group-text {
+    min-width: 170px !important;
+    background-color: #eceaf2 !important;
+}
 
+footer {
+    font-size: xx-small;
+    text-align: center;
+    color: white; /*let's keep the page clean*/
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 0;
+  }
+}
+
+r
 
